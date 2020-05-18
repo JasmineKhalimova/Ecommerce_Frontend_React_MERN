@@ -13,3 +13,6 @@ Required package instilations
     npm i react-router-dom
 - Using bootstrap 4 for css: no instilation required just need to link it inside public -> index.html
     https://getbootstrap.com/docs/4.0/getting-started/introduction/
+
+- Install moemnt:
+    npm i moment 

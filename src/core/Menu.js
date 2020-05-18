@@ -1,6 +1,6 @@
-import React from "react";
+import React, { Fragment } from "react";
 import {Link, withRouter} from "react-router-dom";
-import {signout} from "../auth";
+import {signout, isAuthenticated} from "../auth";
 
 // Setting active page
 const isActive = (history, path) =>{
@@ -17,15 +17,41 @@ const Menu = ({history}) =>(
             <li className="nav-item">
                 <Link className="nav-link" to="/" style={isActive(history,'/')} >Home</Link>
             </li>
-            <li className="nav-item">
-                <Link className="nav-link" to="/signin" style={isActive(history,'/signin')}>Signin</Link>
-            </li>
-            <li className="nav-item">
-                <Link className="nav-link" to="/signup" style={isActive(history,'/signup')}>Signup</Link>
-            </li>
-            <li className="nav-item">
-                <Link className="nav-link" to="/signup" style={{cursor: "pointer", color:"#ffffff"}} onClick={() => signout(() => {history.push("/");})}>Signout</Link>
-            </li>
+            {isAuthenticated() && isAuthenticated().user.role === 0 && (
+                <li className="nav-item">
+                    <Link className="nav-link" style={isActive(history, "/user/dashboard")} to="/user/dashboard">
+                        Dashboard
+                    </Link>
+                </li>
+            )}
+            {isAuthenticated() && isAuthenticated().user.role === 0 && (
+                <li className="nav-item">
+                    <Link className="nav-link" style={isActive(history, "/admin/dashboard")} to="/admin/dashboard">
+                        Dashboard
+                    </Link>
+                </li>
+            )}
+            {!isAuthenticated() && (
+                <Fragment>
+                    <li className="nav-item">
+                        <Link className="nav-link" style={isActive(history, "/signin")} to="/signin">
+                            Signin
+                        </Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" style={isActive(history, "/signup")} to="/signup">
+                            Signup
+                        </Link>
+                    </li>
+                </Fragment>
+                )}
+            {isAuthenticated() && (
+                <li className="nav-item">
+                    <span className="nav-link" style={{ cursor: "pointer", color: "#ffffff" }} onClick={() => signout(() => {history.push("/");})}>
+                        Signout
+                    </span>
+                </li>
+            )}
         </ul>
     </div>
 );

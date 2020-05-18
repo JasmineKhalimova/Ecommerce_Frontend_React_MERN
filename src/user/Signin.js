@@ -16,6 +16,7 @@ const Signin = () => {
     // declaring values/variables 
     const { email, password, loading, error, redirectToReferrer } = values;
 
+    // descruturing user
     const { user } = isAuthenticated();
 
     const handleChange = name => event => {
@@ -100,11 +101,7 @@ const Signin = () => {
     };
 
     return (
-        <Layout
-            title="Signin"
-            description="Signin to your account"
-            className="container col-md-8 offset-md-2"
-        >
+        <Layout title="Signin" description="Signin to your account" className="container col-md-8 offset-md-2" >
             {showLoading()}
             {showError()}
             {signUpForm()}

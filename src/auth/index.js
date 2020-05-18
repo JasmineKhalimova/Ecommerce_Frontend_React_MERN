@@ -64,6 +64,7 @@ export const signout = (next) => {
     }
 };
 
+// to access loacl storage and autheticate user
 export const isAuthenticated = () => {
     if (typeof window == 'undefined') {
         return false;
