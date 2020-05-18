@@ -38,6 +38,7 @@ export const signin = user => {
 
 // Authentication 
 export const authenticate = (data, next) => {
+    // accessing local storage
     if (typeof window !== 'undefined') {
         localStorage.setItem('jwt', JSON.stringify(data));
         next();
@@ -46,9 +47,13 @@ export const authenticate = (data, next) => {
 
 // signout API
 export const signout = (next) => {
+    // accessing local storage
     if (typeof window !== 'undefined') {
+        // removing data form local storage
         localStorage.removeItem('jwt');
+
         next();
+        
         return fetch(`${API}/signout`, {
             method: 'GET'
         })
