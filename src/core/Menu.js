@@ -13,7 +13,7 @@ const isActive = (history, path) =>{
 
 const Menu = ({history}) =>(
     <div>
-        <ul className="nav nav-tabs bg-danger">
+        <ul className="nav justify-content-center bg-danger p-2">
             <li className="nav-item">
                 <Link className="nav-link" to="/" style={isActive(history,'/')} >Home</Link>
             </li>
