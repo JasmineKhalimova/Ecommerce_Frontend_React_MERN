@@ -6,8 +6,8 @@ import { signin, authenticate, isAuthenticated } from "../auth";
 // Deafaul user info
 const Signin = () => {
     const [values, setValues] = useState({
-        email: "ryan@gmail.com",
-        password: "rrrrrr9",
+        email: "",
+        password: "",
         error: "",
         loading: false,
         redirectToReferrer: false
@@ -16,7 +16,7 @@ const Signin = () => {
     // declaring values/variables 
     const { email, password, loading, error, redirectToReferrer } = values;
 
-    // descruturing user
+    // destructuring user
     const { user } = isAuthenticated();
 
     const handleChange = name => event => {
@@ -86,7 +86,7 @@ const Signin = () => {
             </div>
         );
     
-    // redirecting user to homepage or dashboard depending on user type
+    // redirecting to dashboard depending on type of user
     const redirectUser = () => {
         if (redirectToReferrer) {
             if (user && user.role === 1) {
