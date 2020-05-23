@@ -16,3 +16,6 @@ Required package instilations
 
 - Install moemnt:
     npm i moment 
+
+- Install Query string - to get search request results in string format
+    npm i query-string

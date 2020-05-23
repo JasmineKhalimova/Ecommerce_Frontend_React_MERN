@@ -1,4 +1,6 @@
 import { API } from "../config";
+import queryString from "query-string";
+
 
 // Getting sold and newly arrived products
 export const getProducts = sortBy => {
@@ -10,6 +12,7 @@ export const getProducts = sortBy => {
         })
         .catch(err => console.log(err));
 };
+
 // getting catefories api
 export const getCategories = () => {
     return fetch(`${API}/categories`, {
@@ -42,4 +45,28 @@ export const getFilteredProducts = (skip, limit, filters = {}) => {
         .catch(err => {
             console.log(err);
         });
+};
+
+//get products in query string -search api
+export const list = params => {
+    const query = queryString.stringify(params);
+    //console.log("query", query);
+    return fetch(`${API}/products/search?${query}`, {
+        method: "GET"
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+
+//getting products
+export const read = productId => {
+    return fetch(`${API}/product/${productId}`, {
+        method: "GET"
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
 };
