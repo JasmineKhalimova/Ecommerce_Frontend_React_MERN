@@ -11,6 +11,7 @@ import AddCategory from './admin/AddCategory';
 import AddProduct from './admin/AddProduct';
 import Profile from './user/Profile';
 import Shop from './core/Shop';
+import Product from './core/Product';
 
 const Routes = () => {
     return (
@@ -25,6 +26,7 @@ const Routes = () => {
             <AdminRoute path="/create/category" exact component={AddCategory} />
             <AdminRoute path="/create/product" exact component={AddProduct} />
             <PrivateRoute path="/profile/:userId" exact component={Profile} />
+            <Route path="/product/:productId" exact component={Product} />
         </Switch>
     </BrowserRouter>
     );
