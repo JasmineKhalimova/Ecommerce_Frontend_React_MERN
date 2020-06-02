@@ -18,7 +18,9 @@
  .nav :hover {
      border-radius: 0px;
  }
- 
+.right-nav{
+    float: right;
+}
  /* cart badge */
  
  .cart-badge,

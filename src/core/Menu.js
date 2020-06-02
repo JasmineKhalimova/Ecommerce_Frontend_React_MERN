@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import {Link, withRouter} from "react-router-dom";
 import {signout, isAuthenticated} from "../auth";
+import { itemTotal } from "./cartHelpers";
 
 // Setting active page
 const isActive = (history, path) =>{
@@ -36,12 +37,12 @@ const Menu = ({history}) =>(
             )}
             {!isAuthenticated() && (
                 <Fragment>
-                    <li className="nav-item">
+                    <li className="nav-item right-nav">
                         <Link className="nav-link" style={isActive(history, "/signin")} to="/signin">
                             Signin
                         </Link>
                     </li>
-                    <li className="nav-item">
+                    <li className="nav-item right-nav">
                         <Link className="nav-link" style={isActive(history, "/signup")} to="/signup">
                             Signup
                         </Link>
@@ -49,12 +50,20 @@ const Menu = ({history}) =>(
                 </Fragment>
                 )}
             {isAuthenticated() && (
-                <li className="nav-item">
+                <li className="nav-item right-nav">
                     <span className="nav-link" style={{ cursor: "pointer", color: "#ffffff" }} onClick={() => signout(() => {history.push("/");})}>
                         Signout
                     </span>
                 </li>
             )}
+            <li className="nav-item right-nav">
+                <Link className="nav-link" style={isActive(history, "/cart")} to="/cart">
+                    Cart{" "}
+                    <sup>
+                        <small className="cart-badge">{itemTotal()}</small>
+                    </sup>
+                </Link>
+            </li>
         </ul>
     </div>
 );
