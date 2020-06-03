@@ -19,3 +19,6 @@ Required package instilations
 
 - Install Query string - to get search request results in string format
     npm i query-string
+
+- Install Braintree WEB for the payment systems (https://www.npmjs.com/package/braintree-web-drop-in-react)
+    npm install braintree-web-drop-in-react
