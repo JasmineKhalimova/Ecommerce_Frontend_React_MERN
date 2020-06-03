@@ -13,7 +13,6 @@ const Search = () => {
 
     const { categories, category, search, results, searched } = data;
 
-    // loading categories 
     const loadCategories = () => {
         getCategories().then(data => {
             if (data.error) {
@@ -43,13 +42,11 @@ const Search = () => {
         }
     };
 
-    // on submit handle
     const searchSubmit = e => {
         e.preventDefault();
         searchData();
     };
 
-    // handle change
     const handleChange = name => event => {
         setData({ ...data, [name]: event.target.value, searched: false });
     };
@@ -62,10 +59,14 @@ const Search = () => {
             return `No products found`;
         }
     };
+
     const searchedProducts = (results = []) => {
         return (
             <div>
-                <h2 className="mt-4 mb-4"> {searchMessage(searched, results)} </h2>
+                <h2 className="mt-4 mb-4">
+                    {searchMessage(searched, results)}
+                </h2>
+
                 <div className="row">
                     {results.map((product, i) => (
                         <div className="col-4 mb-3">
@@ -77,13 +78,15 @@ const Search = () => {
         );
     };
 
-    // Search form
     const searchForm = () => (
         <form onSubmit={searchSubmit}>
             <span className="input-group-text">
                 <div className="input-group input-group-lg">
                     <div className="input-group-prepend">
-                        <select className="btn mr-2" onChange={handleChange("category")}>
+                        <select
+                            className="btn mr-2"
+                            onChange={handleChange("category")}
+                        >
                             <option value="All">All</option>
                             {categories.map((c, i) => (
                                 <option key={i} value={c._id}>
@@ -92,9 +95,18 @@ const Search = () => {
                             ))}
                         </select>
                     </div>
-                    <input type="search" className="form-control" onChange={handleChange("search")} placeholder="Search by name"/>
+
+                    <input
+                        type="search"
+                        className="form-control"
+                        onChange={handleChange("search")}
+                        placeholder="Search by name"
+                    />
                 </div>
-                <div className="btn input-group-append" style={{ border: "none" }}>
+                <div
+                    className="btn input-group-append"
+                    style={{ border: "none" }}
+                >
                     <button className="input-group-text">Search</button>
                 </div>
             </span>

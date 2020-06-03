@@ -90,7 +90,7 @@
  .jumbotron {
      height: 350px;
      color: #fff;
-     background: url("../css/background.jpg");
+     background: url("../css/banner2.jpg");
      background-size: 150% 150%;
      background-position: center; 
      -webkit-animation: Gradient 15s ease infinite;

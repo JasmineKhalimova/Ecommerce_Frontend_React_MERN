@@ -1,10 +1,8 @@
 import { API } from "../config";
 import queryString from "query-string";
 
-
-// Getting sold and newly arrived products
 export const getProducts = sortBy => {
-    return fetch(`${API}/products?sortBy=${sortBy}&order=desc&limit=4`, {
+    return fetch(`${API}/products?sortBy=${sortBy}&order=desc&limit=6`, {
         method: "GET"
     })
         .then(response => {
@@ -13,7 +11,6 @@ export const getProducts = sortBy => {
         .catch(err => console.log(err));
 };
 
-// getting catefories api
 export const getCategories = () => {
     return fetch(`${API}/categories`, {
         method: "GET"
@@ -24,7 +21,6 @@ export const getCategories = () => {
         .catch(err => console.log(err));
 };
 
-// filltering products 
 export const getFilteredProducts = (skip, limit, filters = {}) => {
     const data = {
         limit,
@@ -47,10 +43,9 @@ export const getFilteredProducts = (skip, limit, filters = {}) => {
         });
 };
 
-//get products in query string -search api
 export const list = params => {
     const query = queryString.stringify(params);
-    //console.log("query", query);
+    console.log("query", query);
     return fetch(`${API}/products/search?${query}`, {
         method: "GET"
     })
@@ -60,7 +55,6 @@ export const list = params => {
         .catch(err => console.log(err));
 };
 
-//getting products
 export const read = productId => {
     return fetch(`${API}/product/${productId}`, {
         method: "GET"
@@ -71,7 +65,6 @@ export const read = productId => {
         .catch(err => console.log(err));
 };
 
-// related list product
 export const listRelated = productId => {
     return fetch(`${API}/products/related/${productId}`, {
         method: "GET"
@@ -82,23 +75,6 @@ export const listRelated = productId => {
         .catch(err => console.log(err));
 };
 
-// created order summary
-export const createOrder = (userId, token, createOrderData) => {
-    return fetch(`${API}/order/create/${userId}`, {
-        method: "POST",
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`
-        },
-        body: JSON.stringify({ order: createOrderData })
-    })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.log(err));
-};
-// Braintree connection
 export const getBraintreeClientToken = (userId, token) => {
     return fetch(`${API}/braintree/getToken/${userId}`, {
         method: "GET",
@@ -114,7 +90,6 @@ export const getBraintreeClientToken = (userId, token) => {
         .catch(err => console.log(err));
 };
 
-// payment method
 export const processPayment = (userId, token, paymentData) => {
     return fetch(`${API}/braintree/payment/${userId}`, {
         method: "POST",
@@ -124,6 +99,22 @@ export const processPayment = (userId, token, paymentData) => {
             Authorization: `Bearer ${token}`
         },
         body: JSON.stringify(paymentData)
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+
+export const createOrder = (userId, token, createOrderData) => {
+    return fetch(`${API}/order/create/${userId}`, {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({ order: createOrderData })
     })
         .then(response => {
             return response.json();

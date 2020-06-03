@@ -56,7 +56,7 @@ const Signup =() => {
                 <label className="text-muted">Password</label>
                 <input type="password" className="form-control"  onChange={handleChange('password')} value={password} ></input>
             </div>
-            <button className="btn btn-success" onClick={clickSubmit} >Submit</button>
+            <button className="btn btn-success mb-5" onClick={clickSubmit} >Submit</button>
         </form>
     );
     // Returing success or error messages 
