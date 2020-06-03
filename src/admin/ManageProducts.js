@@ -6,9 +6,7 @@ import { getProducts, deleteProduct } from "./apiAdmin";
 
 const ManageProducts = () => {
     const [products, setProducts] = useState([]);
-
     const { user, token } = isAuthenticated();
-
     const loadProducts = () => {
         getProducts().then(data => {
             if (data.error) {
