@@ -5,7 +5,6 @@ import { Redirect } from 'react-router-dom';
 import { read, update, updateUser } from './apiUser';
 
 const Profile = ({ match }) => {
-    // creating useState
     const [values, setValues] = useState({
         name: '',
         email: '',
@@ -14,7 +13,6 @@ const Profile = ({ match }) => {
         success: false
     });
 
-    // declaring value/variables
     const { token } = isAuthenticated();
     const { name, email, password, error, success } = values;
 
@@ -60,7 +58,6 @@ const Profile = ({ match }) => {
         }
     };
 
-    //Update profile form
     const profileUpdate = (name, email, password) => (
         <form>
             <div className="form-group">
@@ -75,13 +72,11 @@ const Profile = ({ match }) => {
                 <label className="text-muted">Password</label>
                 <input type="password" onChange={handleChange('password')} className="form-control" value={password} />
             </div>
-
-            <button onClick={clickSubmit} className="btn btn-primary">
+            <button onClick={clickSubmit} className="btn btn-primary mb-5">
                 Submit
             </button>
         </form>
     );
-
     return (
         <Layout title="Profile" description="Update your profile" className="container-fluid">
             <h2 className="mb-4">Profile update</h2>

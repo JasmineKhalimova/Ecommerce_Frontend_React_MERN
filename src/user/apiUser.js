@@ -1,6 +1,5 @@
 import { API } from "../config";
 
-//getting user info 
 export const read = (userId, token) => {
     return fetch(`${API}/user/${userId}`, {
         method: "GET",
@@ -15,7 +14,7 @@ export const read = (userId, token) => {
         })
         .catch(err => console.log(err));
 };
-// updating user info
+
 export const update = (userId, token, user) => {
     return fetch(`${API}/user/${userId}`, {
         method: "PUT",
@@ -32,7 +31,6 @@ export const update = (userId, token, user) => {
         .catch(err => console.log(err));
 };
 
-// to access and updated user on local storage
 export const updateUser = (user, next) => {
     if (typeof window !== "undefined") {
         if (localStorage.getItem("jwt")) {
@@ -43,7 +41,7 @@ export const updateUser = (user, next) => {
         }
     }
 };
-// getting puchase history
+
 export const getPurchaseHistory = (userId, token) => {
     return fetch(`${API}/orders/by/user/${userId}`, {
         method: "GET",
