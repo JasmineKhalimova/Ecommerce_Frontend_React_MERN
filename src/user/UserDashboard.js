@@ -26,7 +26,7 @@ const Dashboard = () => {
 
     const userLinks = () => {
         return (
-            <div className="card">
+            <div className="card mb-5">
                 <h4 className="card-header">User Links</h4>
                 <ul className="list-group">
                     <li className="list-group-item">
@@ -88,7 +88,7 @@ const Dashboard = () => {
     };
 
     return (
-        <Layout title="Dashboard" description={`G'day ${name}!`} className="container-fluid">
+        <Layout title="Dashboard" description={`Hello ${name}!`} className="container-fluid">
             <div className="row">
                 <div className="col-3">{userLinks()}</div>
                 <div className="col-9">

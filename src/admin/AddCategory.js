@@ -57,8 +57,10 @@ const AddCategory = () => {
             return <h3 className="text-danger">{name} category already exists</h3>;
         }
     };
+
+    // go back to dashboard
     const goBack = () => (
-        <div className="mt-5">
+        <div className="mt-5 mb-5">
             <Link to="/admin/dashboard" className="text-warning">
                 Back to Dashboard
             </Link>

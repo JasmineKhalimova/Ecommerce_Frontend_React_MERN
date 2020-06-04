@@ -104,13 +104,9 @@ const Card = ({
         <p className="black-8">Added on {moment(product.createdAt).fromNow()}</p>
         {showStock(product.quantity)}
         <br />
-
         {showViewButton(showViewProductButton)}
-
         {showAddToCartBtn(showAddToCartButton)}
-
         {showRemoveButton(showRemoveProductButton)}
-
         {showCartUpdateOptions(cartUpdate)}
       </div>
     </div>

@@ -82,24 +82,23 @@ const Orders = () => {
             </select>
         </div>
     );
-
+    // go back to dashboard
+    const goBack = () => (
+         <div className="mt-5 mb-5">
+            <Link to="/admin/dashboard" className="text-warning">
+                 Back to Dashboard
+            </Link>
+        </div>
+    );
     return (
-        <Layout
-            title="Orders"
-            description={`G'day ${
-                user.name
-            }, you can manage all the orders here`}
+        <Layout title="Orders" description={`Hi ${ user.name}, you can manage all the orders here`}
             className="container-fluid">
             <div className="row">
                 <div className="col-md-8 offset-md-2">
                     {showOrdersLength()}
-
                     {orders.map((o, oIndex) => {
                         return (
-                            <div
-                                className="mt-5"
-                                key={oIndex}
-                                style={{ borderBottom: "5px solid indigo" }}>
+                            <div className="mt-5" key={oIndex} style={{ borderBottom: "5px solid indigo" }}>
                                 <h2 className="mb-5">
                                     <span className="bg-primary">
                                         Order ID: {o._id}
@@ -134,20 +133,14 @@ const Orders = () => {
                                 </h3>
 
                                 {o.products.map((p, pIndex) => (
-                                    <div
-                                        className="mb-4"
-                                        key={pIndex}
-                                        style={{
-                                            padding: "20px",
-                                            border: "1px solid indigo"
-                                        }}
-                                    >
+                                    <div className="mb-4" key={pIndex} style={{ padding: "20px", border: "1px solid indigo" }}>
                                         {showInput("Product name", p.name)}
                                         {showInput("Product price", p.price)}
                                         {showInput("Product total", p.count)}
                                         {showInput("Product Id", p._id)}
                                     </div>
                                 ))}
+                                {goBack()} 
                             </div>
                         );
                     })}

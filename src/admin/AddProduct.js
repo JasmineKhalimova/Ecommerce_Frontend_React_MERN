@@ -158,14 +158,24 @@ const AddProduct = () => {
             </div>
         );
 
+    // go back to dashboard
+    const goBack = () => (
+        <div className="mt-5 mb-5">
+            <Link to="/admin/dashboard" className="text-warning">
+                Back to Dashboard
+            </Link>
+        </div>
+    );
+
     return (
-        <Layout title="Add a new product" description={`G'day ${user.name}, ready to add a new product?`}>
+        <Layout title="Add a new product" description={`Hello ${user.name}, ready to add a new product?`}>
             <div className="row">
                 <div className="col-md-8 offset-md-2">
                     {showLoading()}
                     {showSuccess()}
                     {showError()}
                     {newPostForm()}
+                    {goBack()} 
                 </div>
             </div>
         </Layout>
