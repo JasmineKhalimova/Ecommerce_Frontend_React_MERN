@@ -8,7 +8,20 @@
     padding-left: 3%;
     padding-right: 3%;
 }
-
+@media (max-width: 576px) {
+    .col-3{
+        max-width: 100%;
+        flex: none;
+    }
+    .jumbotron {
+        height: 200px!important;
+    }
+}
+@media (max-width: 768px) {
+    .product_image{
+        max-height: 180px!important;
+    }
+}
 /**
  * border radius
  */
